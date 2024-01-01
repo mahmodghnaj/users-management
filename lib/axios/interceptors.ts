@@ -35,10 +35,13 @@ export const requestInterceptor = async (
   if (token) {
     config.headers.set("Authorization", `Bearer ${token}`);
   }
+
   return config;
 };
 
-export const successInterceptor = (response: AxiosResponse): AxiosResponse => {
+export const successInterceptor = async (
+  response: AxiosResponse
+): Promise<AxiosResponse> => {
   return response;
 };
 
@@ -62,6 +65,7 @@ export const errorInterceptor = async (error: AxiosError): Promise<void> => {
       Cookies.remove("refresh");
       location.reload();
     }
+
     await Promise.reject(error);
   } else {
     if (error.response) {
@@ -75,6 +79,7 @@ export const errorInterceptor = async (error: AxiosError): Promise<void> => {
     } else {
       console.log("Error", error.message);
     }
+
     await Promise.reject(error);
   }
 };

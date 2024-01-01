@@ -1,4 +1,5 @@
 import { User } from "@/services/auth/type";
+import { formattedRoles } from "@/store/users";
 import { formatDate } from "@/utils/date";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 type PropsComponent = {
@@ -48,6 +49,10 @@ const InfoAccount = ({ user }: PropsComponent) => {
         <div>
           <span className="font-bold "> Join Data :</span>{" "}
           {formatDate(user?.createdAt)}
+        </div>
+        <div>
+          <span className="font-bold "> Roles :</span>{" "}
+          {user && formattedRoles(user.roles)}
         </div>
       </div>
     </>

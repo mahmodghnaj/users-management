@@ -10,8 +10,9 @@ const ConfirmEmail = () => {
   const hash = route.query?.hash;
   const { isLoading, isSuccess, mutate: confirm, isError } = useEmailConfirm();
   useEffect(() => {
+    console.log(route.query);
     if (hash) confirm({ hash: hash });
-  }, []);
+  }, [confirm, hash, route.query]);
   const goToHome = () => {
     location.replace("/");
   };

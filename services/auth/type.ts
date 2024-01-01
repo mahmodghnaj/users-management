@@ -19,6 +19,7 @@ export interface InfSession {
   token: string;
   user: User;
 }
+export type UserRole = "admin" | "user";
 export interface User {
   firstName: string;
   lastName: string;
@@ -28,6 +29,9 @@ export interface User {
   updatedAt: string;
   id: string;
   socialType: string;
+  roles: UserRole[];
+  connectionStatus: 1 | 2; // 1 online 2-offline
+  lastSeenAt: string | null;
 }
 
 export interface EmailConfirmBody {

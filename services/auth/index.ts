@@ -1,6 +1,6 @@
 import { api } from "@/lib/axios/api";
 import Cookies from "js-cookie";
-import { useMutation, useQuery } from "react-query";
+import { UseQueryOptions, useMutation, useQuery } from "react-query";
 import {
   EmailConfirmBody,
   ForgotPasswordBody,
@@ -12,6 +12,7 @@ import {
   User,
 } from "./type";
 import { setRefreshToken } from "@/lib/axios/interceptors";
+import { useCallback } from "react";
 
 export const useLogin = () =>
   useMutation<LoginResponse, unknown, LoginBody>(["login"], async (body) => {
@@ -58,11 +59,17 @@ export const useForgotPassword = () =>
     }
   );
 
-export const useInfSession = () =>
-  useQuery<InfSession>(["infSession"], async () => {
-    const { data } = await api.post("/auth/info-session");
-    return data;
-  });
+export const useInfSession = (
+  optionsQuery?: UseQueryOptions<InfSession, any, InfSession>
+) =>
+  useQuery<InfSession>(
+    ["infSession"],
+    async () => {
+      const { data } = await api.post("/auth/info-session");
+      return data;
+    },
+    { ...optionsQuery }
+  );
 
 export const useMe = () =>
   useQuery<User>(["me"], async () => {

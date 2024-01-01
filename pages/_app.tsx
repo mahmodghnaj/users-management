@@ -14,15 +14,16 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-const Page = ({ Component, pageProps }: AppPropsWithLayout) => {
-  const getLayout = Component.getLayout ?? ((page) => page);
-  const PageComponentWithLayout = () => getLayout(<Component {...pageProps} />);
-  return (
-    <>
-      <QueryClientProvider pageProps={pageProps}>
-        <PageComponentWithLayout />
-      </QueryClientProvider>
-    </>
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout || ((page) => page);
+
+  const layout = getLayout(<Component {...pageProps} />);
+
+  const wrappedLayout = (
+    <QueryClientProvider pageProps={pageProps}>
+      {layout as ReactElement}
+    </QueryClientProvider>
   );
-};
-export default Page;
+
+  return wrappedLayout;
+}

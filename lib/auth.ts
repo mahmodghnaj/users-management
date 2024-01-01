@@ -31,7 +31,7 @@ async function getInfoSession() {
       },
     });
     const res = await response.json();
-    return res?.token ? res : null;
+    return res?.token ? res.user : null;
   } catch (error) {
     return null;
   }
