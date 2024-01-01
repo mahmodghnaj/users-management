@@ -7,4 +7,5 @@ export interface IAuth {
   setToken: (token: string) => void;
   isAuth: boolean;
   setIsAuth: (v: boolean) => void;
+  destroyUser: () => void;
 }

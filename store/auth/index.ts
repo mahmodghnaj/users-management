@@ -9,6 +9,7 @@ export const authStore: StateCreator<IAuth> = (set) => ({
   setUser: (user) => set(() => ({ user: user })),
   isAuth: false,
   setIsAuth: (value) => set(() => ({ isAuth: value })),
+  destroyUser: () => set(() => ({ user: null })),
 });
 
 export const authSelectors = {
@@ -16,4 +17,5 @@ export const authSelectors = {
   token: () => storeApp((state) => state.auth.token),
   setToken: () => storeApp((state) => state.auth.setToken),
   setUser: () => storeApp((state) => state.auth.setUser),
+  destroyUser: () => storeApp((state) => state.auth.destroyUser),
 };

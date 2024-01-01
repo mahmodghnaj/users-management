@@ -14,7 +14,7 @@ const Page: NextPageWithLayout = () => {
   const router = useRouter();
   const setUser = selectors.auth.setUser();
   const user = selectors.auth.user();
-
+  const destroyUser = selectors.auth.destroyUser();
   //logout
   useEffect(() => {
     if (isSuccess) {
@@ -27,6 +27,12 @@ const Page: NextPageWithLayout = () => {
       setUser(data);
     }
   }, [InfoMe]);
+
+  useEffect(() => {
+    () => {
+      destroyUser();
+    };
+  }, []);
 
   return (
     <>

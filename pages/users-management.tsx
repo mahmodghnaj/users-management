@@ -9,10 +9,12 @@ import { EventUserStatus } from "@/services/users/type";
 import { MyComponentMethods } from "@/components/table/type";
 import { User } from "@/services/auth/type";
 import { useDebounce } from "@/hooks/useDebounce";
+import { useRouter } from "next/router";
 
 const Page: NextPageWithLayout = () => {
   const columns = selectors.users.columns();
   const refTable = useRef<MyComponentMethods>(null);
+  const router = useRouter();
   const [name, setName] = useState("");
   const debouncedName = useDebounce(name, 700);
   const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -40,9 +42,18 @@ const Page: NextPageWithLayout = () => {
       <div className="flex items-center justify-center bg-base-100  w-full h-full flex-col">
         <div className="mx-10  mt-10 overflow-hidden">
           <div>
-            <h1 className="text-4xl mb-2 text-center font-bold">
-              Users Management
-            </h1>
+            <div className="flex w-full justify-between">
+              <button
+                onClick={() => router.back()}
+                className="btn btn-outline  btn-sm"
+              >
+                Back
+              </button>
+              <h1 className="text-4xl mb-2 text-center font-bold">
+                Users Management
+              </h1>
+              <div></div>
+            </div>
             <input
               type="text"
               value={name}
