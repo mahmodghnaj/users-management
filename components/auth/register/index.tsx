@@ -49,8 +49,8 @@ const Register = () => {
         className="max-w-md w-full  min-w-max rounded-xl p-6 shadow-2xl bg-neutral text-neutral-content "
         onSubmit={handleSubmit(onSubmitHandler)}
       >
-        <h1 className="text-center text-3xl font-mono">Sign Up with</h1>
-        <div className="grid  grid-cols-2 gap-3 w-full md:space-3 xs:space-1  mt-6">
+        <h1 className="text-center text-3xl font-mono">Sign Up</h1>
+        {/* <div className="grid  grid-cols-2 gap-3 w-full md:space-3 xs:space-1  mt-6">
           <button type="submit" className="btn glass capitalize">
             <FcGoogle size="1.8rem" />
             Google
@@ -59,8 +59,8 @@ const Register = () => {
             <FaGithub size="1.8rem" />
             Github
           </button>
-        </div>
-        <div className="text-center mt-6 divider">OR</div>
+        </div> */}
+        {/* <div className="text-center mt-6 divider">OR</div> */}
         <div className="mt-5 md:space-y-3 xs:space-y-1 ">
           <div className="grid md:grid-cols-2 xs:grid-cols-1 md:gap-3 xs:gap-1">
             <div>
