@@ -43,6 +43,9 @@ const Register = () => {
     if (isLoading) return;
     signUp(values);
   };
+  const loginSocial = (type: string) => {
+    window.location.href = process.env.NEXT_PUBLIC_BASE_URL + "/auth/" + type;
+  };
   return (
     <>
       <form
@@ -50,17 +53,25 @@ const Register = () => {
         onSubmit={handleSubmit(onSubmitHandler)}
       >
         <h1 className="text-center text-3xl font-mono">Sign Up</h1>
-        {/* <div className="grid  grid-cols-2 gap-3 w-full md:space-3 xs:space-1  mt-6">
-          <button type="submit" className="btn glass capitalize">
+        <div className="grid  grid-cols-2 gap-3 w-full md:space-3 xs:space-1  mt-6">
+          <button
+            type="button"
+            onClick={loginSocial.bind(this, "google")}
+            className="btn glass capitalize"
+          >
             <FcGoogle size="1.8rem" />
             Google
           </button>
-          <button type="submit" className="btn glass capitalize">
+          <button
+            onClick={loginSocial.bind(this, "github")}
+            type="button"
+            className="btn glass capitalize"
+          >
             <FaGithub size="1.8rem" />
             Github
           </button>
-        </div> */}
-        {/* <div className="text-center mt-6 divider">OR</div> */}
+        </div>
+        <div className="text-center mt-6 divider">OR</div>
         <div className="mt-5 md:space-y-3 xs:space-y-1 ">
           <div className="grid md:grid-cols-2 xs:grid-cols-1 md:gap-3 xs:gap-1">
             <div>
